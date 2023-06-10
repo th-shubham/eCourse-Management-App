@@ -1,0 +1,46 @@
+<template>
+	<article class="slds-card  tile">
+		<!-- <div class="tile-main"> -->
+			<div class="slds-card__header ">
+				<a href="#" class="tile-header" title={course.Name}>
+					<span >{course.Name}</span>
+				</a>
+			</div>
+			<div class="slds-card__body tile-class slds-card__body_inner ">
+				<p class="slds-text-body_regular tile-body " >
+					{course.Description__c}
+				</p>
+			</div>
+		<!-- </div> -->
+		<footer class="slds-card__footer slds-align_absolute-center slds-wrap slds-grid">
+			<div class="slds-col slds-size_1-of-1 new   slds-p-bottom_small">
+				Price : <lightning-formatted-number 
+							value={course.Price__c} 
+							format-style="currency" 
+							currency-code="INR">
+						</lightning-formatted-number>
+			</div>
+			<div class="slds-col slds-size_1-of-1">
+				<lightning-button  
+					variant="Brand" 
+					label="Add to Cart" 
+					disabled={isdisabled} 
+					onclick={handleAddClick} 
+					class="slds-m-left_x-small">
+				</lightning-button>
+				<template if:true={isdisabled} >
+					<div class="slds-icon_container slds-size_1-of-2" >
+						<lightning-icon 
+							icon-name="utility:delete" 
+							class="blue-icon" 
+							onclick={handleDeleteClick} 
+							alternative-text="Delete Item from Cart!" 
+							title="Delete">
+						</lightning-icon>
+					</div>
+				</template>
+			</div>
+			
+		</footer>
+	</article>
+</template>
